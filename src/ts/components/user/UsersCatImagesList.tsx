@@ -5,6 +5,8 @@ import {
   getUsersCatImages as getUsersCatImagesAction,
   setFavoriteCatImage as setFavoriteCatImageAction,
   setUnfavoriteCatImage as setUnfavoriteCatImageAction,
+  setUpVoteCatImage as setUpVoteAction,
+  setDownVoteCatImage as setDownVoteAction,
 } from '~/store/actions';
 import { selectUsersCatImages } from '~/store/reducers/user/catImages';
 
@@ -13,6 +15,8 @@ interface IProps {
   getUsersCatImages: () => void;
   setFavoriteCatImage: (catImage: ICatImage) => void;
   setUnfavoriteCatImage: (catImage: ICatImage) => void;
+  setUpVoteCatImage: (catImage: ICatImage) => void;
+  setDownVoteCatImage: (catImage: ICatImage) => void;
 }
 
 const UsersCatImagesListComponent = (props: IProps): React.ReactElement => {
@@ -30,6 +34,8 @@ const UsersCatImagesListComponent = (props: IProps): React.ReactElement => {
           >
             {catImage.isFavorite ? 'Unfavourite' : 'Favourite'}
           </span>
+          <span onClick={() => props.setUpVoteCatImage(catImage)}>Up Vote</span>
+          <span onClick={() => props.setDownVoteCatImage(catImage)}>Down Vote</span>
         </>
       ))}
     </MainContentContainer>
@@ -44,6 +50,8 @@ const mapDispatchToProps = {
   getUsersCatImages: getUsersCatImagesAction,
   setFavoriteCatImage: setFavoriteCatImageAction,
   setUnfavoriteCatImage: setUnfavoriteCatImageAction,
+  setUpVoteCatImage: setUpVoteAction,
+  setDownVoteCatImage: setDownVoteAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersCatImagesListComponent);

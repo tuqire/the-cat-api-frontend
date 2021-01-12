@@ -5,6 +5,8 @@ import uploadUsersCatImageSaga from './uploadUsersCatImageSaga';
 import getUsersFavoriteCatImagesSaga from './getUsersFavoriteCatImagesSaga';
 import setFavoriteCatImageSaga from './setFavoriteCatImageSaga';
 import setUnfavoriteCatImageSaga from './setUnfavoriteCatImageSaga';
+import setUpVoteCatImageSaga from './setUpVoteCatImageSaga';
+import setDownVoteCatImageSaga from './setDownVoteCatImageSaga';
 
 function* getUsersCatImagesSagaHandler() {
   yield takeEvery(ACTIONS.GET_USERS_CAT_IMAGES, getUsersCatImagesSaga);
@@ -26,6 +28,14 @@ function* setUnfavoriteCatImageSagaHandler() {
   yield takeEvery(ACTIONS.SET_UNFAVORITE_CAT_IMAGE, setUnfavoriteCatImageSaga);
 }
 
+function* setUpVoteCatImageSagaHandler() {
+  yield takeEvery(ACTIONS.SET_UP_VOTE_CAT_IMAGE, setUpVoteCatImageSaga);
+}
+
+function* setDownVoteCatImageSagaHandler() {
+  yield takeEvery(ACTIONS.SET_DOWN_VOTE_CAT_IMAGE, setDownVoteCatImageSaga);
+}
+
 export default function* rootSaga() {
   yield all([
     getUsersCatImagesSagaHandler(),
@@ -33,5 +43,7 @@ export default function* rootSaga() {
     getUsersFavoriteCatImagesSagaHandler(),
     setFavoriteCatImageSagaHandler(),
     setUnfavoriteCatImageSagaHandler(),
+    setUpVoteCatImageSagaHandler(),
+    setDownVoteCatImageSagaHandler(),
   ]);
 }

@@ -29,6 +29,24 @@ export const setUnfavoriteCatImage = (catImage: ICatImage): ICatImageAction => (
   },
 });
 
+// TODO: change SET to SUBMIT
+export const SET_UP_VOTE_CAT_IMAGE = 'SET_UP_VOTE_CAT_IMAGE';
+export const setUpVoteCatImage = (catImage: ICatImage): ICatImageAction => ({
+  type: SET_UP_VOTE_CAT_IMAGE,
+  payload: {
+    catImage,
+  },
+});
+
+// TODO: change SET to SUBMIT
+export const SET_DOWN_VOTE_CAT_IMAGE = 'SET_DOWN_VOTE_CAT_IMAGE';
+export const setDownVoteCatImage = (catImage: ICatImage): ICatImageAction => ({
+  type: SET_DOWN_VOTE_CAT_IMAGE,
+  payload: {
+    catImage,
+  },
+});
+
 // TODO: change GET to FETCH
 export const GET_USERS_FAVORITE_CAT_IMAGES = 'GET_USERS_FAVORITE_CAT_IMAGES';
 export const getUsersFavoriteCatImages = (): IGenericAction => ({
