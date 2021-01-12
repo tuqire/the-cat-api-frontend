@@ -3,7 +3,10 @@ interface IAppState {
 }
 
 interface IUsersState {
-  catImages: ICatImage[];
+  catImages: {
+    uploaded: ICatImage[];
+    favorites: IFavoriteCatImage[];
+  };
 }
 
 interface IRootState {

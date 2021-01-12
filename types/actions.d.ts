@@ -9,9 +9,30 @@ interface IUploadFileAction {
   };
 }
 
-interface ISaveCatImagesAction {
+interface ICatImagesAction {
   type: string;
   payload: {
     catImages: ICatImage[];
+  };
+}
+
+interface ICatImageAction {
+  type: string;
+  payload: {
+    catImage: ICatImage;
+  };
+}
+
+interface IFavoriteCatImagesAction {
+  type: string;
+  payload: {
+    favoriteCatImages: IFavoriteCatImage[];
+  };
+}
+
+interface IFavoriteCatImageAction {
+  type: string;
+  payload: {
+    favoriteCatImage: IFavoriteCatImage;
   };
 }

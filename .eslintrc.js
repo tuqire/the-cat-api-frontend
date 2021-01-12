@@ -29,7 +29,7 @@ module.exports = {
     'react/destructuring-assignment': [0],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'react/jsx-one-expression-per-line': [0],
-    'max-len': ['error', { code: 120 }],
+    'max-len': ['error', { code: 150 }],
     'import/extensions': 'off',
     '@typescript-eslint/member-delimiter-style': [2],
     '@typescript-eslint/naming-convention': [
