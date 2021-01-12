@@ -1,5 +1,7 @@
-import Home from './Home';
+import UploadCatImages from './UploadCatImages';
+import ViewCatImages from './ViewCatImages';
 
 export default {
-  Home,
+  UploadCatImages,
+  ViewCatImages,
 };

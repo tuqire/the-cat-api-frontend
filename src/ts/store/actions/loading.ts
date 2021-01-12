@@ -1,12 +1,11 @@
-export const SET_IS_LOADING = 'SET_IS_LOADING';
+export const STARTED_LOADING = 'STARTED_LOADING';
 
-const SetIsLoading = (isLoading: boolean): ILoadingAction => ({
-  type: SET_IS_LOADING,
-  payload: {
-    isLoading,
-  },
+export const startedLoading = (): IGenericAction => ({
+  type: STARTED_LOADING,
 });
 
-export const startedLoading = (): ILoadingAction => SetIsLoading(true);
+export const FINISHED_LOADING = 'FINISHED_LOADING';
 
-export const finishedLoading = (): ILoadingAction => SetIsLoading(false);
+export const finishedLoading = (): IGenericAction => ({
+  type: FINISHED_LOADING,
+});

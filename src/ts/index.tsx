@@ -12,8 +12,11 @@ const Root = (
     <Router>
       <Provider store={store}>
         <Switch>
-          <Route path={ROUTES.HOME}>
-            <Pages.Home />
+          <Route path={ROUTES.CAT_IMAGES.UPLOAD}>
+            <Pages.UploadCatImages />
+          </Route>
+          <Route path={ROUTES.CAT_IMAGES.VIEW}>
+            <Pages.ViewCatImages />
           </Route>
         </Switch>
       </Provider>

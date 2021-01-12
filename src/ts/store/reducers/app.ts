@@ -1,14 +1,20 @@
-import { SET_IS_LOADING } from '~/store/actions';
+import { STARTED_LOADING, FINISHED_LOADING } from '~/store/actions';
 
 const DEFAULT_STATE: IAppState = {
   loadingCounter: 0,
 };
 
-export default (state = DEFAULT_STATE, action: ILoadingAction) : IAppState => {
+export default (state = DEFAULT_STATE, action: IGenericAction) : IAppState => {
   switch (action.type) {
-    case SET_IS_LOADING: {
+    case STARTED_LOADING: {
       return {
-        loadingCounter: action.payload.isLoading ? state.loadingCounter + 1 : state.loadingCounter - 1,
+        loadingCounter: state.loadingCounter + 1,
+      };
+    }
+
+    case FINISHED_LOADING: {
+      return {
+        loadingCounter: state.loadingCounter - 1,
       };
     }
 

@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
+require('dotenv').config();
+
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devtool: 'source-map',
@@ -67,6 +69,21 @@ module.exports = {
     }),
   ],
   devServer: {
+    historyApiFallback: true,
     port: 4000,
+
+    // the below server would be a fully functional server in a production environment
+    proxy: {
+      '/api': {
+        changeOrigin: true,
+        target: 'http://api.thecatapi.com/v1',
+        pathRewrite: {
+          '^/api/' : '',
+        },
+        headers: {
+          'x-api-key': process.env.CAT_API_KEY,
+        },
+      },
+    },
   },
 }

@@ -2,9 +2,16 @@ interface IGenericAction {
   type: string;
 }
 
-interface ILoadingAction {
+interface IUploadFileAction {
   type: string;
   payload: {
-    isLoading: boolean;
+    file: File;
+  };
+}
+
+interface ISaveCatImagesAction {
+  type: string;
+  payload: {
+    catImages: ICatImage[];
   };
 }

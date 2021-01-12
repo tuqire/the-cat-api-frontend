@@ -4,10 +4,13 @@
 
 Make sure you have Yarn (`^1.22.4`) and Node (`^14.0.0`) installed.
 
-Then run:
+Then:
 
-1. `yarn` to install dependencies
-2. `yarn dev` in a CLI to start the React app
+1. Sign up for a [Cat API key](https://thecatapi.com/signup)
+2. Add a `.env` file to the root of this repo
+3. Add `CAT_API_KEY=<CAT_API_KEY>` to the `.env` file replacing `<CAT_API_KEY>` with your cat API key
+4. Run `yarn` in a CLI  to install dependencies
+5. Run `yarn dev` in a CLI to start the React app
 
 The app should now be accessible from http://localhost:4000
 

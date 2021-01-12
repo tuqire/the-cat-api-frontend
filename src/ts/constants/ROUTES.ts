@@ -1,3 +1,6 @@
 export default {
-  HOME: '/',
+  CAT_IMAGES: {
+    VIEW: '/',
+    UPLOAD: '/upload',
+  },
 };
