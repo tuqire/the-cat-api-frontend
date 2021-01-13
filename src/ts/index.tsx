@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Pages from './pages';
 import { ROUTES } from './constants';
-import '../css/index.scss';
+
+import '../scss/index.scss';
 
 const Root = (
   <div>

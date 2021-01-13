@@ -4,8 +4,14 @@ interface IAppState {
 
 interface IUsersState {
   catImages: {
-    uploaded: ICatImage[];
-    favorites: IFavoriteCatImage[];
+    uploaded: {
+      wereLoaded: boolean;
+      data: ICatImage[];
+    };
+    favorites: {
+      wereLoaded: boolean;
+      data: IFavoriteCatImage[];
+    };
   };
 }
 

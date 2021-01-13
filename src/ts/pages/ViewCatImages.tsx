@@ -1,6 +1,6 @@
 import React from 'react';
 import PageContainer from '~/components/containers/PageContainer';
-import UsersCatImagesList from '~/components/user/UsersCatImagesList';
+import UsersCatImagesList from '~/components/cat-images/UsersCatImagesList';
 
 const ViewCatImages = (): React.ReactElement => (
   <PageContainer>

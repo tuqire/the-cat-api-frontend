@@ -1,26 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { ROUTES } from '~/constants';
+import Container from 'react-bootstrap/Container';
+import Header from '~/components/Header';
+import { selectIsLoading } from '~/store/reducers/app';
 
-const StyledDiv = styled.div`
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 25px auto;
+const StyledContainer = styled(Container)`
+  margin-top: 30px;
+  margin-bottom: 30px;
 `;
 
 interface IProps {
   children: React.ReactNode;
+  isLoading: boolean;
 }
 
-const PageContainer = ({ children }: IProps): React.ReactElement => (
-  <StyledDiv>
-    <Link to={ROUTES.CAT_IMAGES.VIEW}>View Cat Images</Link>
-    <Link to={ROUTES.CAT_IMAGES.UPLOAD}>Upload Cat Images</Link>
-    {children}
-  </StyledDiv>
+const PageContainer = ({ children, isLoading }: IProps): React.ReactElement => (
+  <>
+    <Header />
+    <StyledContainer fluid>
+      {isLoading ? 'Loading...' : children}
+    </StyledContainer>
+  </>
 );
 
-export default PageContainer;
+const mapStateToProps = (state: IRootState) => ({
+  isLoading: selectIsLoading(state),
+});
+
+export default connect(mapStateToProps)(PageContainer);

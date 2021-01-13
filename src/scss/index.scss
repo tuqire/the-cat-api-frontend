@@ -1,0 +1,9 @@
+@import "../../node_modules/normalize.css/normalize.css";
+
+$spacer: 30px;
+
+@import "~bootstrap/scss/bootstrap";
+
+img {
+  max-width: 100%;
+}

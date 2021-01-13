@@ -1,6 +1,11 @@
 import { call, put } from 'redux-saga/effects';
 import Axios from 'axios';
-import { startedLoading, finishedLoading, saveUsersCatImages, getUsersFavoriteCatImages } from '~/store/actions';
+import {
+  startedLoading,
+  finishedLoading,
+  saveUsersCatImages,
+  getUsersFavoriteCatImages,
+} from '~/store/actions';
 
 export default function* getUsersCatImagesSaga() {
   try {
