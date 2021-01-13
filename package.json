@@ -7,7 +7,7 @@
     "build": "NODE_ENV='production' webpack",
     "build:dev": "NODE_ENV='development' webpack",
     "start:dev": "NODE_ENV='local' webpack-dev-server",
-    "test": "yarn test:lint && yarn test:unit",
+    "test": "yarn test:lint",
     "test:unit": "NODE_ENV='test' jest client/tests --config=client/jest.config.js",
     "test:lint": "eslint ."
   },
