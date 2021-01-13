@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import {
   getUsersCatImages as getUsersCatImagesAction,
@@ -15,8 +16,7 @@ import { selectUsersCatImages, selectWereUsersCatImagesLoaded, selectWereUsersFa
 
 const StyledCol = styled(Col)`
   margin: 20px 0;
-  position: rlative;
-  text-align: center;
+  position: relative;
 
   &.favorite {
     img {
@@ -24,22 +24,17 @@ const StyledCol = styled(Col)`
     }
   }
 
-  .favorite-button {
-    margin-bottom: 10px;
+  img {
+    margin-top: 10px;
   }
 
-  .up-vote-button,
-  .down-vote-button {
+  .votes-badge {
     position: absolute;
-    top: 0;
-  }
+    right: 15px;
 
-  .up-vote-button {
-    left: 10px;
-  }
-
-  .down-vote-button {
-    right: 10px;
+    button {
+      margin-left: 10px;
+    }
   }
 `;
 
@@ -69,26 +64,30 @@ const UsersCatImagesListComponent = (props: IProps): React.ReactElement => {
           {props.wereUsersFavoriteCatImagesLoaded && (
             <Button
               className="favorite-button"
-              variant="secondary"
+              variant={catImage.isFavorite ? 'primary' : 'secondary'}
               onClick={() => (catImage.isFavorite ? props.setUnfavoriteCatImage(catImage) : props.setFavoriteCatImage(catImage))}
             >
               {catImage.isFavorite ? 'Unfavourite' : 'Favourite'}
             </Button>
           )}
-          <Button
-            className="up-vote-button"
-            variant="link"
-            onClick={() => props.setUpVoteCatImage(catImage)}
-          >
-            + Vote
-          </Button>
-          <Button
-            className="down-vote-button"
-            variant="link"
-            onClick={() => props.setDownVoteCatImage(catImage)}
-          >
-            - Vote
-          </Button>
+          {!Number.isNaN(catImage.numVotes) ? (
+            <Badge className="votes-badge" variant="primary">Votes: {catImage.numVotes}
+              <Button
+                variant="light"
+                size="sm"
+                onClick={() => props.setUpVoteCatImage(catImage)}
+              >
+                +
+              </Button>
+              <Button
+                variant="light"
+                size="sm"
+                onClick={() => props.setDownVoteCatImage(catImage)}
+              >
+                -
+              </Button>
+            </Badge>
+          ) : null}
           <img alt={`cat ${catImage.id}`} src={catImage.url} />
         </StyledCol>
       ))}

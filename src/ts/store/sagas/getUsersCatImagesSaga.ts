@@ -5,6 +5,7 @@ import {
   finishedLoading,
   saveUsersCatImages,
   getUsersFavoriteCatImages,
+  getUsersCatImageVotes,
 } from '~/store/actions';
 
 export default function* getUsersCatImagesSaga() {
@@ -12,6 +13,7 @@ export default function* getUsersCatImagesSaga() {
     yield put(startedLoading());
 
     yield put(getUsersFavoriteCatImages());
+    yield put(getUsersCatImageVotes());
 
     // TODO: add pagination
     const { data }: { data: ICatImage[] } = yield call(

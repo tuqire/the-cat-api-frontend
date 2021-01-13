@@ -12,6 +12,10 @@ interface IUsersState {
       wereLoaded: boolean;
       data: IFavoriteCatImage[];
     };
+    votes: {
+      wereLoaded: boolean;
+      data: ICatImageVote[];
+    };
   };
 }
 

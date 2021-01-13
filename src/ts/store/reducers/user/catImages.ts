@@ -1,4 +1,4 @@
-import { SAVE_USERS_CAT_IMAGES, SAVE_USERS_FAVORITE_CAT_IMAGES } from '~/store/actions';
+import { SAVE_USERS_CAT_IMAGES, SAVE_USERS_FAVORITE_CAT_IMAGES, SAVE_USERS_CAT_IMAGE_VOTES } from '~/store/actions';
 
 const DEFAULT_STATE: IUsersState['catImages'] = {
   uploaded: {
@@ -9,13 +9,27 @@ const DEFAULT_STATE: IUsersState['catImages'] = {
     data: [],
     wereLoaded: false,
   },
+  votes: {
+    data: [],
+    wereLoaded: false,
+  },
 };
 
 const isFavoriteCatImage = (catImage: ICatImage, favoriteCatImages: IFavoriteCatImage[]): boolean => (
   favoriteCatImages.some((favoriteCatImage) => favoriteCatImage.image_id === catImage.id)
 );
 
-export default (state = DEFAULT_STATE, action: ICatImagesAction | IFavoriteCatImagesAction) : IUsersState['catImages'] => {
+const calculateCatImageVotes = (catImage: ICatImage, catImageVotes: ICatImageVote[]) => (
+  catImageVotes.reduce((acc, catImageVote) => {
+    if (catImageVote.image_id === catImage.id) {
+      return acc + (catImageVote.value || -1);
+    }
+
+    return acc;
+  }, 0)
+);
+
+export default (state = DEFAULT_STATE, action: ICatImagesAction | IFavoriteCatImagesAction | ICatImageVotesAction) : IUsersState['catImages'] => {
   switch (action.type) {
     case SAVE_USERS_CAT_IMAGES: {
       const castedAction = action as ICatImagesAction;
@@ -28,6 +42,7 @@ export default (state = DEFAULT_STATE, action: ICatImagesAction | IFavoriteCatIm
             ...castedAction.payload.catImages.map((catImage) => ({
               ...catImage,
               isFavorite: isFavoriteCatImage(catImage, state.favorites.data),
+              numVotes: calculateCatImageVotes(catImage, state.votes.data),
             })),
           ],
         },
@@ -48,6 +63,27 @@ export default (state = DEFAULT_STATE, action: ICatImagesAction | IFavoriteCatIm
           data: state.uploaded.data.map((catImage) => ({
             ...catImage,
             isFavorite: isFavoriteCatImage(catImage, castedAction.payload.favoriteCatImages),
+            numVotes: calculateCatImageVotes(catImage, state.votes.data),
+          })),
+        },
+      };
+    }
+
+    case SAVE_USERS_CAT_IMAGE_VOTES: {
+      const castedAction = action as ICatImageVotesAction;
+
+      return {
+        ...state,
+        votes: {
+          wereLoaded: true,
+          data: castedAction.payload.catImageVotes,
+        },
+        uploaded: {
+          ...state.uploaded,
+          data: state.uploaded.data.map((catImage) => ({
+            ...catImage,
+            isFavorite: isFavoriteCatImage(catImage, state.favorites.data),
+            numVotes: calculateCatImageVotes(catImage, castedAction.payload.catImageVotes),
           })),
         },
       };

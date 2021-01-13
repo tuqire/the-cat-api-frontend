@@ -47,6 +47,19 @@ export const setDownVoteCatImage = (catImage: ICatImage): ICatImageAction => ({
   },
 });
 
+export const GET_USERS_CAT_IMAGE_VOTES = 'GET_USERS_CAT_IMAGE_VOTES';
+export const getUsersCatImageVotes = (): IGenericAction => ({
+  type: GET_USERS_CAT_IMAGE_VOTES,
+});
+
+export const SAVE_USERS_CAT_IMAGE_VOTES = 'SAVE_USERS_CAT_IMAGE_VOTES';
+export const saveUsersCatImageVotes = (catImageVotes: ICatImageVote[]): ICatImageVotesAction => ({
+  type: SAVE_USERS_CAT_IMAGE_VOTES,
+  payload: {
+    catImageVotes,
+  },
+});
+
 // TODO: change GET to FETCH
 export const GET_USERS_FAVORITE_CAT_IMAGES = 'GET_USERS_FAVORITE_CAT_IMAGES';
 export const getUsersFavoriteCatImages = (): IGenericAction => ({

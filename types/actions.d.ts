@@ -36,3 +36,10 @@ interface IFavoriteCatImageAction {
     favoriteCatImage: IFavoriteCatImage;
   };
 }
+
+interface ICatImageVotesAction {
+  type: string;
+  payload: {
+    catImageVotes: ICatImageVote[];
+  };
+}
