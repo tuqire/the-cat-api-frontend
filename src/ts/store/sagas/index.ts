@@ -1,24 +1,24 @@
 import { all, takeEvery } from 'redux-saga/effects';
 import * as ACTIONS from '~/store/actions';
-import getUsersCatImagesSaga from './getUsersCatImagesSaga';
+import fetchUsersCatImagesSaga from './fetchUsersCatImagesSaga';
 import uploadUsersCatImageSaga from './uploadUsersCatImageSaga';
-import getUsersFavoriteCatImagesSaga from './getUsersFavoriteCatImagesSaga';
+import fetchUsersFavoriteCatImagesSaga from './fetchUsersFavoriteCatImagesSaga';
 import setFavoriteCatImageSaga from './setFavoriteCatImageSaga';
 import setUnfavoriteCatImageSaga from './setUnfavoriteCatImageSaga';
-import getUsersCatImageVotesSaga from './getUsersCatImageVotesSaga';
+import fetchUsersCatImageVotesSaga from './fetchUsersCatImageVotesSaga';
 import setUpVoteCatImageSaga from './setUpVoteCatImageSaga';
 import setDownVoteCatImageSaga from './setDownVoteCatImageSaga';
 
-function* getUsersCatImagesSagaHandler() {
-  yield takeEvery(ACTIONS.GET_USERS_CAT_IMAGES, getUsersCatImagesSaga);
+function* fetchUsersCatImagesSagaHandler() {
+  yield takeEvery(ACTIONS.FETCH_USERS_CAT_IMAGES, fetchUsersCatImagesSaga);
 }
 
 function* uploadUsersCatImageSagaHandler() {
   yield takeEvery(ACTIONS.UPLOAD_USERS_CAT_IMAGE, uploadUsersCatImageSaga);
 }
 
-function* getUsersFavoriteCatImagesSagaHandler() {
-  yield takeEvery(ACTIONS.GET_USERS_FAVORITE_CAT_IMAGES, getUsersFavoriteCatImagesSaga);
+function* fetchUsersFavoriteCatImagesSagaHandler() {
+  yield takeEvery(ACTIONS.FETCH_USERS_FAVORITE_CAT_IMAGES, fetchUsersFavoriteCatImagesSaga);
 }
 
 function* setFavoriteCatImageSagaHandler() {
@@ -29,8 +29,8 @@ function* setUnfavoriteCatImageSagaHandler() {
   yield takeEvery(ACTIONS.SET_UNFAVORITE_CAT_IMAGE, setUnfavoriteCatImageSaga);
 }
 
-function* getUsersCatImageVotesSagaHandler() {
-  yield takeEvery(ACTIONS.GET_USERS_CAT_IMAGE_VOTES, getUsersCatImageVotesSaga);
+function* fetchUsersCatImageVotesSagaHandler() {
+  yield takeEvery(ACTIONS.FETCH_USERS_CAT_IMAGE_VOTES, fetchUsersCatImageVotesSaga);
 }
 
 function* setUpVoteCatImageSagaHandler() {
@@ -43,12 +43,12 @@ function* setDownVoteCatImageSagaHandler() {
 
 export default function* rootSaga() {
   yield all([
-    getUsersCatImagesSagaHandler(),
+    fetchUsersCatImagesSagaHandler(),
     uploadUsersCatImageSagaHandler(),
-    getUsersFavoriteCatImagesSagaHandler(),
+    fetchUsersFavoriteCatImagesSagaHandler(),
     setFavoriteCatImageSagaHandler(),
     setUnfavoriteCatImageSagaHandler(),
-    getUsersCatImageVotesSagaHandler(),
+    fetchUsersCatImageVotesSagaHandler(),
     setUpVoteCatImageSagaHandler(),
     setDownVoteCatImageSagaHandler(),
   ]);

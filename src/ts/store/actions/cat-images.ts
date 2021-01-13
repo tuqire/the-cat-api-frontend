@@ -1,6 +1,6 @@
-export const GET_USERS_CAT_IMAGES = 'GET_USERS_CAT_IMAGES';
-export const getUsersCatImages = (): IGenericAction => ({
-  type: GET_USERS_CAT_IMAGES,
+export const FETCH_USERS_CAT_IMAGES = 'FETCH_USERS_CAT_IMAGES';
+export const fetchUsersCatImages = (): IGenericAction => ({
+  type: FETCH_USERS_CAT_IMAGES,
 });
 
 // TODO: change SAVE to CACHE
@@ -55,9 +55,9 @@ export const setDownVoteCatImage = (catImage: ICatImage): ICatImageAction => ({
   },
 });
 
-export const GET_USERS_CAT_IMAGE_VOTES = 'GET_USERS_CAT_IMAGE_VOTES';
-export const getUsersCatImageVotes = (): IGenericAction => ({
-  type: GET_USERS_CAT_IMAGE_VOTES,
+export const FETCH_USERS_CAT_IMAGE_VOTES = 'FETCH_USERS_CAT_IMAGE_VOTES';
+export const fetchUsersCatImageVotes = (): IGenericAction => ({
+  type: FETCH_USERS_CAT_IMAGE_VOTES,
 });
 
 export const SAVE_USERS_CAT_IMAGE_VOTES = 'SAVE_USERS_CAT_IMAGE_VOTES';
@@ -68,10 +68,9 @@ export const saveUsersCatImageVotes = (catImageVotes: ICatImageVote[]): ICatImag
   },
 });
 
-// TODO: change GET to FETCH
-export const GET_USERS_FAVORITE_CAT_IMAGES = 'GET_USERS_FAVORITE_CAT_IMAGES';
-export const getUsersFavoriteCatImages = (): IGenericAction => ({
-  type: GET_USERS_FAVORITE_CAT_IMAGES,
+export const FETCH_USERS_FAVORITE_CAT_IMAGES = 'FETCH_USERS_FAVORITE_CAT_IMAGES';
+export const fetchUsersFavoriteCatImages = (): IGenericAction => ({
+  type: FETCH_USERS_FAVORITE_CAT_IMAGES,
 });
 
 export const SAVE_USERS_FAVORITE_CAT_IMAGES = 'SAVE_USERS_FAVORITE_CAT_IMAGES';

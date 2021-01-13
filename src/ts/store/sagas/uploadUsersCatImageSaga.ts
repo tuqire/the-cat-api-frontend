@@ -3,7 +3,6 @@ import Axios from 'axios';
 import {
   startedLoading,
   finishedLoading,
-  getUsersCatImages,
   saveUsersCatImageUploadError,
 } from '~/store/actions';
 import { ROUTES } from '~/constants';
@@ -24,8 +23,6 @@ export default function* uploadUsersCatImageSaga(action: IUploadFileAction) {
         },
       },
     );
-
-    yield put(getUsersCatImages());
 
     window.location.assign(ROUTES.CAT_IMAGES.VIEW);
   } catch (error) {

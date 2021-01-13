@@ -1,6 +1,6 @@
 import { call, put, select } from 'redux-saga/effects';
 import Axios from 'axios';
-import { startedLoading, finishedLoading, getUsersCatImages } from '~/store/actions';
+import { startedLoading, finishedLoading, fetchUsersFavoriteCatImages } from '~/store/actions';
 import { selectUsersFavoriteCatImage } from '~/store/reducers/user/catImages';
 
 export default function* setFavoriteCatImageSaga(action: ICatImageAction) {
@@ -14,7 +14,7 @@ export default function* setFavoriteCatImageSaga(action: ICatImageAction) {
         image_id: action.payload.catImage.id,
       });
 
-      yield put(getUsersCatImages());
+      yield put(fetchUsersFavoriteCatImages());
     }
   } catch (error) {
     console.error({ error });

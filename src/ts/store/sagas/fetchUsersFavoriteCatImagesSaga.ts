@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects';
 import Axios from 'axios';
 import { startedLoading, finishedLoading, saveUsersFavoriteCatImages } from '~/store/actions';
 
-export default function* getUsersFavoriteCatImagesSaga() {
+export default function* fetchUsersFavoriteCatImagesSaga() {
   try {
     yield put(startedLoading());
 

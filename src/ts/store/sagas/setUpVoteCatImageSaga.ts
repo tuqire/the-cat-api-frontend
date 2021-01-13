@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import Axios from 'axios';
-import { startedLoading, finishedLoading, getUsersCatImageVotes } from '~/store/actions';
+import { startedLoading, finishedLoading, fetchUsersCatImageVotes } from '~/store/actions';
 
 export default function* setUpVoteCatImageSaga(action: ICatImageAction) {
   try {
@@ -11,7 +11,7 @@ export default function* setUpVoteCatImageSaga(action: ICatImageAction) {
       value: 1,
     });
 
-    yield put(getUsersCatImageVotes());
+    yield put(fetchUsersCatImageVotes());
   } catch (error) {
     console.error({ error });
   } finally {

@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import {
-  getUsersCatImages as getUsersCatImagesAction,
+  fetchUsersCatImages as fetchUsersCatImagesAction,
   setFavoriteCatImage as setFavoriteCatImageAction,
   setUnfavoriteCatImage as setUnfavoriteCatImageAction,
   setUpVoteCatImage as setUpVoteAction,
@@ -42,7 +42,7 @@ interface IProps {
   catImages: ICatImage[];
   wereCatImagesLoaded: boolean;
   wereUsersFavoriteCatImagesLoaded: boolean;
-  getUsersCatImages: () => void;
+  fetchUsersCatImages: () => void;
   setFavoriteCatImage: (catImage: ICatImage) => void;
   setUnfavoriteCatImage: (catImage: ICatImage) => void;
   setUpVoteCatImage: (catImage: ICatImage) => void;
@@ -53,7 +53,7 @@ const UsersCatImagesListComponent = (props: IProps): React.ReactElement => {
   // TODO: correct way to do effects
   useEffect(() => {
     if (!props.wereCatImagesLoaded) {
-      props.getUsersCatImages();
+      props.fetchUsersCatImages();
     }
   }, [props]);
 
@@ -102,7 +102,7 @@ const mapStateToProps = (state: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getUsersCatImages: getUsersCatImagesAction,
+  fetchUsersCatImages: fetchUsersCatImagesAction,
   setFavoriteCatImage: setFavoriteCatImageAction,
   setUnfavoriteCatImage: setUnfavoriteCatImageAction,
   setUpVoteCatImage: setUpVoteAction,

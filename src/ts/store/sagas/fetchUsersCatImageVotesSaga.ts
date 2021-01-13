@@ -6,7 +6,7 @@ import {
   saveUsersCatImageVotes,
 } from '~/store/actions';
 
-export default function* getUsersCatImageVotesSaga() {
+export default function* fetchUsersCatImageVotesSaga() {
   try {
     yield put(startedLoading());
 
