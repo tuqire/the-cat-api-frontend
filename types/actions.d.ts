@@ -2,6 +2,13 @@ interface IGenericAction {
   type: string;
 }
 
+interface IErrorAction {
+  type: string;
+  payload: {
+    errorMessage: string;
+  };
+}
+
 interface IUploadFileAction {
   type: string;
   payload: {

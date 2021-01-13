@@ -1,6 +1,11 @@
 import { call, put } from 'redux-saga/effects';
 import Axios from 'axios';
-import { startedLoading, finishedLoading, getUsersCatImages } from '~/store/actions';
+import {
+  startedLoading,
+  finishedLoading,
+  getUsersCatImages,
+  saveUsersCatImageUploadError,
+} from '~/store/actions';
 import { ROUTES } from '~/constants';
 
 export default function* uploadUsersCatImageSaga(action: IUploadFileAction) {
@@ -25,6 +30,8 @@ export default function* uploadUsersCatImageSaga(action: IUploadFileAction) {
     window.location.assign(ROUTES.CAT_IMAGES.VIEW);
   } catch (error) {
     console.error({ error });
+
+    yield put(saveUsersCatImageUploadError(error.response.data.message));
   } finally {
     yield put(finishedLoading());
   }

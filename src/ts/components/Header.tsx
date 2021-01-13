@@ -18,8 +18,6 @@ const Header = (): React.ReactElement => (
     <Navbar bg="dark" variant="dark" className="header-mavbar">
       <Navbar.Brand href={ROUTES.CAT_IMAGES.VIEW}>
         <img alt="The Cat API logo" src={LogoImg} />
-        {' '}
-        Mock Frontend
       </Navbar.Brand>
       <Navbar.Collapse id="header-navbar-nav">
         <Nav className="mr-auto">

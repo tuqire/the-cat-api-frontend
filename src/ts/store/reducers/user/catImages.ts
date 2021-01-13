@@ -1,17 +1,20 @@
-import { SAVE_USERS_CAT_IMAGES, SAVE_USERS_FAVORITE_CAT_IMAGES, SAVE_USERS_CAT_IMAGE_VOTES } from '~/store/actions';
+import { SAVE_USERS_CAT_IMAGES, SAVE_USER_CAT_IMAGE_UPLOAD_ERROR, SAVE_USERS_FAVORITE_CAT_IMAGES, SAVE_USERS_CAT_IMAGE_VOTES } from '~/store/actions';
 
 const DEFAULT_STATE: IUsersState['catImages'] = {
+  errors: {
+    upload: null,
+  },
   uploaded: {
-    data: [],
     wereLoaded: false,
+    data: [],
   },
   favorites: {
-    data: [],
     wereLoaded: false,
+    data: [],
   },
   votes: {
-    data: [],
     wereLoaded: false,
+    data: [],
   },
 };
 
@@ -29,7 +32,9 @@ const calculateCatImageVotes = (catImage: ICatImage, catImageVotes: ICatImageVot
   }, 0)
 );
 
-export default (state = DEFAULT_STATE, action: ICatImagesAction | IFavoriteCatImagesAction | ICatImageVotesAction) : IUsersState['catImages'] => {
+type ActionTypes = ICatImagesAction | IErrorAction | IFavoriteCatImagesAction | ICatImageVotesAction;
+
+export default (state = DEFAULT_STATE, action: ActionTypes): IUsersState['catImages'] => {
   switch (action.type) {
     case SAVE_USERS_CAT_IMAGES: {
       const castedAction = action as ICatImagesAction;
@@ -45,6 +50,16 @@ export default (state = DEFAULT_STATE, action: ICatImagesAction | IFavoriteCatIm
               numVotes: calculateCatImageVotes(catImage, state.votes.data),
             })),
           ],
+        },
+      };
+    }
+    case SAVE_USER_CAT_IMAGE_UPLOAD_ERROR: {
+      const castedAction = action as IErrorAction;
+
+      return {
+        ...state,
+        errors: {
+          upload: castedAction.payload.errorMessage,
         },
       };
     }
@@ -97,6 +112,8 @@ export default (state = DEFAULT_STATE, action: ICatImagesAction | IFavoriteCatIm
 
 export const selectUsersCatImages = (state: IRootState): ICatImage[] => state.user.catImages.uploaded.data;
 export const selectWereUsersCatImagesLoaded = (state: IRootState): boolean => state.user.catImages.uploaded.wereLoaded;
+
+export const selectUsersCatImageErrors = (state: IRootState): IUsersState['catImages']['errors'] => state.user.catImages.errors;
 
 export const selectUsersFavoriteCatImages = (state: IRootState): IFavoriteCatImage[] => state.user.catImages.favorites.data;
 export const selectWereUsersFavoriteCatImagesLoaded = (state: IRootState): boolean => state.user.catImages.favorites.wereLoaded;

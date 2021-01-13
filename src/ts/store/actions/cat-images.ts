@@ -12,6 +12,14 @@ export const saveUsersCatImages = (catImages: ICatImage[]): ICatImagesAction => 
   },
 });
 
+export const SAVE_USER_CAT_IMAGE_UPLOAD_ERROR = 'SAVE_USER_CAT_IMAGE_UPLOAD_ERROR';
+export const saveUsersCatImageUploadError = (errorMessage: string): IErrorAction => ({
+  type: SAVE_USER_CAT_IMAGE_UPLOAD_ERROR,
+  payload: {
+    errorMessage,
+  },
+});
+
 // TODO: change SET to SUBMIT
 export const SET_FAVORITE_CAT_IMAGE = 'SET_FAVORITE_CAT_IMAGE';
 export const setFavoriteCatImage = (catImage: ICatImage): ICatImageAction => ({

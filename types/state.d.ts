@@ -4,6 +4,9 @@ interface IAppState {
 
 interface IUsersState {
   catImages: {
+    errors: {
+      upload?: string;
+    };
     uploaded: {
       wereLoaded: boolean;
       data: ICatImage[];
