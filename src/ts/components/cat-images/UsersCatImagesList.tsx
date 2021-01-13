@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
+import { useLoadUsersCatImages } from '~/effects';
 import {
   fetchUsersCatImages as fetchUsersCatImagesAction,
   submitFavoriteCatImage as submitFavoriteCatImageAction,
@@ -40,9 +41,7 @@ const StyledCol = styled(Col)`
 
 interface IProps {
   catImages: ICatImage[];
-  wereCatImagesLoaded: boolean;
   wereUsersFavoriteCatImagesLoaded: boolean;
-  fetchUsersCatImages: () => void;
   submitFavoriteCatImage: (catImage: ICatImage) => void;
   submitUnfavoriteCatImage: (catImage: ICatImage) => void;
   submitUpVoteCatImage: (catImage: ICatImage) => void;
@@ -50,12 +49,7 @@ interface IProps {
 }
 
 const UsersCatImagesListComponent = (props: IProps): React.ReactElement => {
-  // TODO: correct way to do effects
-  useEffect(() => {
-    if (!props.wereCatImagesLoaded) {
-      props.fetchUsersCatImages();
-    }
-  }, [props]);
+  useLoadUsersCatImages();
 
   return (
     <Row>
