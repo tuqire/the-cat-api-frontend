@@ -3,7 +3,7 @@ import Axios from 'axios';
 import {
   startedLoading,
   finishedLoading,
-  saveUsersCatImages,
+  cacheUsersCatImages,
   fetchUsersFavoriteCatImages,
   fetchUsersCatImageVotes,
 } from '~/store/actions';
@@ -21,7 +21,7 @@ export default function* fetchUsersCatImagesSaga() {
       '/api/images?limit=100&include_vote=1&include_favourite=1',
     );
 
-    yield put(saveUsersCatImages(data));
+    yield put(cacheUsersCatImages(data));
   } catch (error) {
     console.error({ error });
   } finally {

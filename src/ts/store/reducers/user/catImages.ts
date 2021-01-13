@@ -1,8 +1,8 @@
 import {
-  SAVE_USERS_CAT_IMAGES,
-  SAVE_USER_CAT_IMAGE_UPLOAD_ERROR,
-  SAVE_USERS_FAVORITE_CAT_IMAGES,
-  SAVE_USERS_CAT_IMAGE_VOTES,
+  CACHE_USERS_CAT_IMAGES,
+  CACHE_USER_CAT_IMAGE_UPLOAD_ERROR,
+  CACHE_USERS_FAVORITE_CAT_IMAGES,
+  CACHE_USERS_CAT_IMAGE_VOTES,
 } from '~/store/actions';
 
 const DEFAULT_STATE: IUsersState['catImages'] = {
@@ -41,7 +41,7 @@ type ActionTypes = ICatImagesAction | IErrorAction | IFavoriteCatImagesAction | 
 
 export default (state = DEFAULT_STATE, action: ActionTypes): IUsersState['catImages'] => {
   switch (action.type) {
-    case SAVE_USERS_CAT_IMAGES: {
+    case CACHE_USERS_CAT_IMAGES: {
       const castedAction = action as ICatImagesAction;
 
       return {
@@ -58,7 +58,7 @@ export default (state = DEFAULT_STATE, action: ActionTypes): IUsersState['catIma
         },
       };
     }
-    case SAVE_USER_CAT_IMAGE_UPLOAD_ERROR: {
+    case CACHE_USER_CAT_IMAGE_UPLOAD_ERROR: {
       const castedAction = action as IErrorAction;
 
       return {
@@ -69,7 +69,7 @@ export default (state = DEFAULT_STATE, action: ActionTypes): IUsersState['catIma
       };
     }
 
-    case SAVE_USERS_FAVORITE_CAT_IMAGES: {
+    case CACHE_USERS_FAVORITE_CAT_IMAGES: {
       const castedAction = action as IFavoriteCatImagesAction;
 
       return {
@@ -89,7 +89,7 @@ export default (state = DEFAULT_STATE, action: ActionTypes): IUsersState['catIma
       };
     }
 
-    case SAVE_USERS_CAT_IMAGE_VOTES: {
+    case CACHE_USERS_CAT_IMAGE_VOTES: {
       const castedAction = action as ICatImageVotesAction;
 
       return {

@@ -3,18 +3,17 @@ export const fetchUsersCatImages = (): IGenericAction => ({
   type: FETCH_USERS_CAT_IMAGES,
 });
 
-// TODO: change SAVE to CACHE
-export const SAVE_USERS_CAT_IMAGES = 'SAVE_USERS_CAT_IMAGES';
-export const saveUsersCatImages = (catImages: ICatImage[]): ICatImagesAction => ({
-  type: SAVE_USERS_CAT_IMAGES,
+export const CACHE_USERS_CAT_IMAGES = 'CACHE_USERS_CAT_IMAGES';
+export const cacheUsersCatImages = (catImages: ICatImage[]): ICatImagesAction => ({
+  type: CACHE_USERS_CAT_IMAGES,
   payload: {
     catImages,
   },
 });
 
-export const SAVE_USER_CAT_IMAGE_UPLOAD_ERROR = 'SAVE_USER_CAT_IMAGE_UPLOAD_ERROR';
-export const saveUsersCatImageUploadError = (errorMessage: string): IErrorAction => ({
-  type: SAVE_USER_CAT_IMAGE_UPLOAD_ERROR,
+export const CACHE_USER_CAT_IMAGE_UPLOAD_ERROR = 'CACHE_USER_CAT_IMAGE_UPLOAD_ERROR';
+export const cacheUsersCatImageUploadError = (errorMessage: string): IErrorAction => ({
+  type: CACHE_USER_CAT_IMAGE_UPLOAD_ERROR,
   payload: {
     errorMessage,
   },
@@ -57,9 +56,9 @@ export const fetchUsersCatImageVotes = (): IGenericAction => ({
   type: FETCH_USERS_CAT_IMAGE_VOTES,
 });
 
-export const SAVE_USERS_CAT_IMAGE_VOTES = 'SAVE_USERS_CAT_IMAGE_VOTES';
-export const saveUsersCatImageVotes = (catImageVotes: ICatImageVote[]): ICatImageVotesAction => ({
-  type: SAVE_USERS_CAT_IMAGE_VOTES,
+export const CACHE_USERS_CAT_IMAGE_VOTES = 'CACHE_USERS_CAT_IMAGE_VOTES';
+export const cacheUsersCatImageVotes = (catImageVotes: ICatImageVote[]): ICatImageVotesAction => ({
+  type: CACHE_USERS_CAT_IMAGE_VOTES,
   payload: {
     catImageVotes,
   },
@@ -70,9 +69,9 @@ export const fetchUsersFavoriteCatImages = (): IGenericAction => ({
   type: FETCH_USERS_FAVORITE_CAT_IMAGES,
 });
 
-export const SAVE_USERS_FAVORITE_CAT_IMAGES = 'SAVE_USERS_FAVORITE_CAT_IMAGES';
-export const saveUsersFavoriteCatImages = (favoriteCatImages: IFavoriteCatImage[]): IFavoriteCatImagesAction => ({
-  type: SAVE_USERS_FAVORITE_CAT_IMAGES,
+export const CACHE_USERS_FAVORITE_CAT_IMAGES = 'CACHE_USERS_FAVORITE_CAT_IMAGES';
+export const cacheUsersFavoriteCatImages = (favoriteCatImages: IFavoriteCatImage[]): IFavoriteCatImagesAction => ({
+  type: CACHE_USERS_FAVORITE_CAT_IMAGES,
   payload: {
     favoriteCatImages,
   },

@@ -3,7 +3,7 @@ import Axios from 'axios';
 import {
   startedLoading,
   finishedLoading,
-  saveUsersCatImageUploadError,
+  cacheUsersCatImageUploadError,
 } from '~/store/actions';
 import { ROUTES } from '~/constants';
 
@@ -28,7 +28,7 @@ export default function* submitUsersCatImageSaga(action: IUploadFileAction) {
   } catch (error) {
     console.error({ error });
 
-    yield put(saveUsersCatImageUploadError(error.response.data.message));
+    yield put(cacheUsersCatImageUploadError(error.response.data.message));
   } finally {
     yield put(finishedLoading());
   }
