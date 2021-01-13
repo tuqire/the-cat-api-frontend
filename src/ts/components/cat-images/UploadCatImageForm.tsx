@@ -4,18 +4,18 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import {
-  uploadUsersCatImage as uploadUsersCatImageAction,
+  submitUsersCatImage as submitUsersCatImageAction,
   saveUsersCatImageUploadError as saveUsersCatImageUploadErrorAction,
 } from '~/store/actions';
 import { selectUsersCatImageErrors } from '~/store/reducers/user/catImages';
 
 interface IProps {
   uploadError: string;
-  uploadUsersCatImage: (catImage: File) => void;
+  submitUsersCatImage: (catImage: File) => void;
   saveUsersCatImageUploadError: (error: string) => void;
 }
 
-const UploadCatImageFormComponent = ({ uploadError, uploadUsersCatImage, saveUsersCatImageUploadError }: IProps): React.ReactElement => {
+const UploadCatImageFormComponent = ({ uploadError, submitUsersCatImage, saveUsersCatImageUploadError }: IProps): React.ReactElement => {
   const [uploadedFile, setUploadedFile] = useState<File>();
 
   const submitForm = () => {
@@ -24,7 +24,7 @@ const UploadCatImageFormComponent = ({ uploadError, uploadUsersCatImage, saveUse
       return;
     }
 
-    uploadUsersCatImage(uploadedFile);
+    submitUsersCatImage(uploadedFile);
   };
 
   return (
@@ -54,7 +54,7 @@ const mapStateToProps = (state: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  uploadUsersCatImage: uploadUsersCatImageAction,
+  submitUsersCatImage: submitUsersCatImageAction,
   saveUsersCatImageUploadError: saveUsersCatImageUploadErrorAction,
 };
 

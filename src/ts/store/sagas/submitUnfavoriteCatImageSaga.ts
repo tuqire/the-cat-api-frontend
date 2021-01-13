@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { startedLoading, finishedLoading, fetchUsersFavoriteCatImages } from '~/store/actions';
 import { selectUsersFavoriteCatImage } from '~/store/reducers/user/catImages';
 
-export default function* setUnfavoriteCatImageSaga(action: ICatImageAction) {
+export default function* submitUnfavoriteCatImageSaga(action: ICatImageAction) {
   try {
     yield put(startedLoading());
 

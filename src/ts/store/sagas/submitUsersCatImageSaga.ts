@@ -7,7 +7,7 @@ import {
 } from '~/store/actions';
 import { ROUTES } from '~/constants';
 
-export default function* uploadUsersCatImageSaga(action: IUploadFileAction) {
+export default function* submitUsersCatImageSaga(action: IUploadFileAction) {
   try {
     yield put(startedLoading());
 

@@ -20,36 +20,33 @@ export const saveUsersCatImageUploadError = (errorMessage: string): IErrorAction
   },
 });
 
-// TODO: change SET to SUBMIT
-export const SET_FAVORITE_CAT_IMAGE = 'SET_FAVORITE_CAT_IMAGE';
-export const setFavoriteCatImage = (catImage: ICatImage): ICatImageAction => ({
-  type: SET_FAVORITE_CAT_IMAGE,
+export const SUBMIT_FAVORITE_CAT_IMAGE = 'SUBMIT_FAVORITE_CAT_IMAGE';
+export const submitFavoriteCatImage = (catImage: ICatImage): ICatImageAction => ({
+  type: SUBMIT_FAVORITE_CAT_IMAGE,
   payload: {
     catImage,
   },
 });
 
-export const SET_UNFAVORITE_CAT_IMAGE = 'SET_UNFAVORITE_CAT_IMAGE';
-export const setUnfavoriteCatImage = (catImage: ICatImage): ICatImageAction => ({
-  type: SET_UNFAVORITE_CAT_IMAGE,
+export const SUBMIT_UNFAVORITE_CAT_IMAGE = 'SUBMIT_UNFAVORITE_CAT_IMAGE';
+export const submitUnfavoriteCatImage = (catImage: ICatImage): ICatImageAction => ({
+  type: SUBMIT_UNFAVORITE_CAT_IMAGE,
   payload: {
     catImage,
   },
 });
 
-// TODO: change SET to SUBMIT
-export const SET_UP_VOTE_CAT_IMAGE = 'SET_UP_VOTE_CAT_IMAGE';
-export const setUpVoteCatImage = (catImage: ICatImage): ICatImageAction => ({
-  type: SET_UP_VOTE_CAT_IMAGE,
+export const SUBMIT_UP_VOTE_CAT_IMAGE = 'SUBMIT_UP_VOTE_CAT_IMAGE';
+export const submitUpVoteCatImage = (catImage: ICatImage): ICatImageAction => ({
+  type: SUBMIT_UP_VOTE_CAT_IMAGE,
   payload: {
     catImage,
   },
 });
 
-// TODO: change SET to SUBMIT
-export const SET_DOWN_VOTE_CAT_IMAGE = 'SET_DOWN_VOTE_CAT_IMAGE';
-export const setDownVoteCatImage = (catImage: ICatImage): ICatImageAction => ({
-  type: SET_DOWN_VOTE_CAT_IMAGE,
+export const SUBMIT_DOWN_VOTE_CAT_IMAGE = 'SUBMIT_DOWN_VOTE_CAT_IMAGE';
+export const submitDownVoteCatImage = (catImage: ICatImage): ICatImageAction => ({
+  type: SUBMIT_DOWN_VOTE_CAT_IMAGE,
   payload: {
     catImage,
   },
@@ -81,9 +78,9 @@ export const saveUsersFavoriteCatImages = (favoriteCatImages: IFavoriteCatImage[
   },
 });
 
-export const UPLOAD_USERS_CAT_IMAGE = 'UPLOAD_USERS_CAT_IMAGE';
-export const uploadUsersCatImage = (catImage: File): IUploadFileAction => ({
-  type: UPLOAD_USERS_CAT_IMAGE,
+export const SUBMIT_USERS_CAT_IMAGE = 'SUBMIT_USERS_CAT_IMAGE';
+export const submitUsersCatImage = (catImage: File): IUploadFileAction => ({
+  type: SUBMIT_USERS_CAT_IMAGE,
   payload: {
     file: catImage,
   },

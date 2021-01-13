@@ -7,10 +7,10 @@ import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import {
   fetchUsersCatImages as fetchUsersCatImagesAction,
-  setFavoriteCatImage as setFavoriteCatImageAction,
-  setUnfavoriteCatImage as setUnfavoriteCatImageAction,
-  setUpVoteCatImage as setUpVoteAction,
-  setDownVoteCatImage as setDownVoteAction,
+  submitFavoriteCatImage as submitFavoriteCatImageAction,
+  submitUnfavoriteCatImage as submitUnfavoriteCatImageAction,
+  submitUpVoteCatImage as submitUpVoteAction,
+  submitDownVoteCatImage as submitDownVoteAction,
 } from '~/store/actions';
 import { selectUsersCatImages, selectWereUsersCatImagesLoaded, selectWereUsersFavoriteCatImagesLoaded } from '~/store/reducers/user/catImages';
 
@@ -43,10 +43,10 @@ interface IProps {
   wereCatImagesLoaded: boolean;
   wereUsersFavoriteCatImagesLoaded: boolean;
   fetchUsersCatImages: () => void;
-  setFavoriteCatImage: (catImage: ICatImage) => void;
-  setUnfavoriteCatImage: (catImage: ICatImage) => void;
-  setUpVoteCatImage: (catImage: ICatImage) => void;
-  setDownVoteCatImage: (catImage: ICatImage) => void;
+  submitFavoriteCatImage: (catImage: ICatImage) => void;
+  submitUnfavoriteCatImage: (catImage: ICatImage) => void;
+  submitUpVoteCatImage: (catImage: ICatImage) => void;
+  submitDownVoteCatImage: (catImage: ICatImage) => void;
 }
 
 const UsersCatImagesListComponent = (props: IProps): React.ReactElement => {
@@ -65,7 +65,7 @@ const UsersCatImagesListComponent = (props: IProps): React.ReactElement => {
             <Button
               className="favorite-button"
               variant={catImage.isFavorite ? 'primary' : 'secondary'}
-              onClick={() => (catImage.isFavorite ? props.setUnfavoriteCatImage(catImage) : props.setFavoriteCatImage(catImage))}
+              onClick={() => (catImage.isFavorite ? props.submitUnfavoriteCatImage(catImage) : props.submitFavoriteCatImage(catImage))}
             >
               {catImage.isFavorite ? 'Unfavourite' : 'Favourite'}
             </Button>
@@ -75,14 +75,14 @@ const UsersCatImagesListComponent = (props: IProps): React.ReactElement => {
               <Button
                 variant="light"
                 size="sm"
-                onClick={() => props.setUpVoteCatImage(catImage)}
+                onClick={() => props.submitUpVoteCatImage(catImage)}
               >
                 +
               </Button>
               <Button
                 variant="light"
                 size="sm"
-                onClick={() => props.setDownVoteCatImage(catImage)}
+                onClick={() => props.submitDownVoteCatImage(catImage)}
               >
                 -
               </Button>
@@ -103,10 +103,10 @@ const mapStateToProps = (state: IRootState) => ({
 
 const mapDispatchToProps = {
   fetchUsersCatImages: fetchUsersCatImagesAction,
-  setFavoriteCatImage: setFavoriteCatImageAction,
-  setUnfavoriteCatImage: setUnfavoriteCatImageAction,
-  setUpVoteCatImage: setUpVoteAction,
-  setDownVoteCatImage: setDownVoteAction,
+  submitFavoriteCatImage: submitFavoriteCatImageAction,
+  submitUnfavoriteCatImage: submitUnfavoriteCatImageAction,
+  submitUpVoteCatImage: submitUpVoteAction,
+  submitDownVoteCatImage: submitDownVoteAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersCatImagesListComponent);

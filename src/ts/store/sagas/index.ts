@@ -1,55 +1,55 @@
 import { all, takeEvery } from 'redux-saga/effects';
 import * as ACTIONS from '~/store/actions';
 import fetchUsersCatImagesSaga from './fetchUsersCatImagesSaga';
-import uploadUsersCatImageSaga from './uploadUsersCatImageSaga';
+import submitUsersCatImageSaga from './submitUsersCatImageSaga';
 import fetchUsersFavoriteCatImagesSaga from './fetchUsersFavoriteCatImagesSaga';
-import setFavoriteCatImageSaga from './setFavoriteCatImageSaga';
-import setUnfavoriteCatImageSaga from './setUnfavoriteCatImageSaga';
+import submitFavoriteCatImageSaga from './submitFavoriteCatImageSaga';
+import submitUnfavoriteCatImageSaga from './submitUnfavoriteCatImageSaga';
 import fetchUsersCatImageVotesSaga from './fetchUsersCatImageVotesSaga';
-import setUpVoteCatImageSaga from './setUpVoteCatImageSaga';
-import setDownVoteCatImageSaga from './setDownVoteCatImageSaga';
+import submitUpVoteCatImageSaga from './submitUpVoteCatImageSaga';
+import submitDownVoteCatImageSaga from './submitDownVoteCatImageSaga';
 
 function* fetchUsersCatImagesSagaHandler() {
   yield takeEvery(ACTIONS.FETCH_USERS_CAT_IMAGES, fetchUsersCatImagesSaga);
 }
 
-function* uploadUsersCatImageSagaHandler() {
-  yield takeEvery(ACTIONS.UPLOAD_USERS_CAT_IMAGE, uploadUsersCatImageSaga);
+function* submitUsersCatImageSagaHandler() {
+  yield takeEvery(ACTIONS.SUBMIT_USERS_CAT_IMAGE, submitUsersCatImageSaga);
 }
 
 function* fetchUsersFavoriteCatImagesSagaHandler() {
   yield takeEvery(ACTIONS.FETCH_USERS_FAVORITE_CAT_IMAGES, fetchUsersFavoriteCatImagesSaga);
 }
 
-function* setFavoriteCatImageSagaHandler() {
-  yield takeEvery(ACTIONS.SET_FAVORITE_CAT_IMAGE, setFavoriteCatImageSaga);
+function* submitFavoriteCatImageSagaHandler() {
+  yield takeEvery(ACTIONS.SUBMIT_FAVORITE_CAT_IMAGE, submitFavoriteCatImageSaga);
 }
 
-function* setUnfavoriteCatImageSagaHandler() {
-  yield takeEvery(ACTIONS.SET_UNFAVORITE_CAT_IMAGE, setUnfavoriteCatImageSaga);
+function* submitUnfavoriteCatImageSagaHandler() {
+  yield takeEvery(ACTIONS.SUBMIT_UNFAVORITE_CAT_IMAGE, submitUnfavoriteCatImageSaga);
 }
 
 function* fetchUsersCatImageVotesSagaHandler() {
   yield takeEvery(ACTIONS.FETCH_USERS_CAT_IMAGE_VOTES, fetchUsersCatImageVotesSaga);
 }
 
-function* setUpVoteCatImageSagaHandler() {
-  yield takeEvery(ACTIONS.SET_UP_VOTE_CAT_IMAGE, setUpVoteCatImageSaga);
+function* submitUpVoteCatImageSagaHandler() {
+  yield takeEvery(ACTIONS.SUBMIT_UP_VOTE_CAT_IMAGE, submitUpVoteCatImageSaga);
 }
 
-function* setDownVoteCatImageSagaHandler() {
-  yield takeEvery(ACTIONS.SET_DOWN_VOTE_CAT_IMAGE, setDownVoteCatImageSaga);
+function* submitDownVoteCatImageSagaHandler() {
+  yield takeEvery(ACTIONS.SUBMIT_DOWN_VOTE_CAT_IMAGE, submitDownVoteCatImageSaga);
 }
 
 export default function* rootSaga() {
   yield all([
     fetchUsersCatImagesSagaHandler(),
-    uploadUsersCatImageSagaHandler(),
+    submitUsersCatImageSagaHandler(),
     fetchUsersFavoriteCatImagesSagaHandler(),
-    setFavoriteCatImageSagaHandler(),
-    setUnfavoriteCatImageSagaHandler(),
+    submitFavoriteCatImageSagaHandler(),
+    submitUnfavoriteCatImageSagaHandler(),
     fetchUsersCatImageVotesSagaHandler(),
-    setUpVoteCatImageSagaHandler(),
-    setDownVoteCatImageSagaHandler(),
+    submitUpVoteCatImageSagaHandler(),
+    submitDownVoteCatImageSagaHandler(),
   ]);
 }
